@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://crm2qjgu5jvbl"]
+
+[ext_resource type="PackedScene" uid="uid://bgug6nbw2h7qt" path="res://player/male_v02.glb" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dcvftn23mxofn" path="res://player/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://2kilhe0kacrb" path="res://player/flash_light.gd" id="3_g1dw6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.38964844
+height = 1.8630371
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_onrkg")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_4flbx")]
+
+[node name="shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, 0.93151855, 0.003)
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="player_camera" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.7270031, 0.14945541)
+fov = 53.437496
+
+[node name="flash_light" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.0581478, 0)
+spot_range = 7.8835745
+spot_angle = 16.150812
+script = ExtResource("3_g1dw6")
