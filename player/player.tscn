@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://crm2qjgu5jvbl"]
+[gd_scene load_steps=7 format=3 uid="uid://crm2qjgu5jvbl"]
 
 [ext_resource type="Script" uid="uid://dcvftn23mxofn" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://2kilhe0kacrb" path="res://player/flash_light.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://c0fixowf1678l" path="res://player/reticle.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://ca2gjmyq3furq" path="res://player/debug.gd" id="4_qjkh3"]
+[ext_resource type="Theme" uid="uid://c8u0bc5mxq52q" path="res://themes/debug.tres" id="5_g6k8r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 radius = 0.38964844
@@ -33,10 +35,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = 9.0
-offset_right = -30.0
-offset_bottom = 9.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -73,3 +73,19 @@ width = 2.0
 [node name="bottom" type="Line2D" parent="Control/CenterContainer"]
 points = PackedVector2Array(0, 5, 0, 15)
 width = 2.0
+
+[node name="DebugPanel" type="PanelContainer" parent="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+script = ExtResource("4_qjkh3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/DebugPanel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_g6k8r")
