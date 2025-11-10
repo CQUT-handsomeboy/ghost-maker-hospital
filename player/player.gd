@@ -5,7 +5,7 @@ const SPRINT_SPEED = 8
 var speed = ORIGINAL_SPEED
 const JUMP_VELOCITY = 9
 
-@onready var player_camera: Camera3D = $player_camera
+@onready var player_camera: Camera3D = $camera_controller/player_camera
 
 var camera_rotation_x: float = 0.0
 var camera_rotation_y: float = 0.0
@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 		var mouse_delta = event.relative
 		camera_rotation_y -= mouse_delta.x * 0.005 # 控制角色左右转身
 		camera_rotation_x -= mouse_delta.y * 0.005 # 控制相机上下俯仰
-		camera_rotation_x = clamp(camera_rotation_x, -0.6, 0.2) # 根据需要调整角度
+		camera_rotation_x = clamp(camera_rotation_x, -1.5, 0.6) # 根据需要调整角度
 		rotation.y = camera_rotation_y
 		player_camera.rotation.x = camera_rotation_x
 	if Input.is_action_just_pressed("ui_cancel"): # "ui_cancel" 通常是 ESC 键
