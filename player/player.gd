@@ -53,6 +53,7 @@ func player_base_move(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	player_base_move(delta)
+	global.debug.add_property("speed",speed,1)
 
 func _exit_tree():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
