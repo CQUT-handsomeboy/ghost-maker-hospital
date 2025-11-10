@@ -6,7 +6,10 @@ var speed = ORIGINAL_SPEED
 const JUMP_VELOCITY = 9
 
 @onready var player_camera: Camera3D = $camera_controller/player_camera
-
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var gun_flash: OmniLight3D = $weapon_controller/flash
+@onready var gun_emitter: GPUParticles3D = $weapon_controller/emitter
+@onready var flash_timer: Timer = $flash_timer
 var camera_rotation_x: float = 0.0
 var camera_rotation_y: float = 0.0
 
@@ -38,7 +41,10 @@ func _input(event: InputEvent) -> void:
 		speed = ORIGINAL_SPEED
 	if Input.is_action_just_pressed("shoot"):
 		_shoot()
-
+		anim.play("shoot")
+		gun_flash.visible = true
+		gun_emitter.emitting = true
+		flash_timer.start()
 
 func player_base_move(delta: float) -> void:
 	if not is_on_floor():
